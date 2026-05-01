@@ -52,6 +52,6 @@ RUN if [ "$DOWNLOAD_MODEL" = "true" ]; then \
 CMD ["./entrypoint.sh"]
 
 # Upgrade PyTorch to 2.7+ for Blackwell GPU support (sm_120 / RTX 5000 series)
-RUN /app/.venv/bin/pip install --upgrade --no-cache-dir \
+RUN /app/.venv/bin/python -m pip install --upgrade --no-cache-dir \
     torch torchaudio \
     --index-url https://download.pytorch.org/whl/cu128
