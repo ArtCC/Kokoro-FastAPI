@@ -48,9 +48,9 @@ RUN if [ "$DOWNLOAD_MODEL" = "true" ]; then \
     python download_model.py --output api/src/models/v1_0; \
     fi
 
+# Upgrade PyTorch to 2.7+ for Blackwell GPU support (sm_120 / RTX 5000 series)
+RUN VIRTUAL_ENV=/app/.venv uv pip install --upgrade torch torchaudio \
+    --index-url https://download.pytorch.org/whl/cu128
+
 # Run FastAPI server through entrypoint.sh
 CMD ["./entrypoint.sh"]
-
-# Upgrade PyTorch to 2.7+ for Blackwell GPU support (sm_120 / RTX 5000 series)
-RUN uv pip install --upgrade torch torchaudio \
-    --index-url https://download.pytorch.org/whl/cu128
