@@ -140,7 +140,7 @@ jobs:
       REPO: ${{ vars.REPO || 'kokoro-fastapi' }}
     strategy:
       matrix:
-        build_target: ["cpu", "gpu", "rocm"]
+        build_target: ["cpu", "gpu"]
     steps:
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
